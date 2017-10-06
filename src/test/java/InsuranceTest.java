@@ -19,6 +19,7 @@ public class InsuranceTest {
     System.setProperty("webdriver.gecko.driver", "drv/geckodriver.exe");
     System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
 
+
     //driver = new FirefoxDriver();
     driver = new ChromeDriver();
     baseUrl = "https://www.rgs.ru/";
