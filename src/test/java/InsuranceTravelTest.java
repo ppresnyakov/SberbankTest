@@ -34,31 +34,27 @@ public class InsuranceTravelTest {
   @Test
   public void testInsurance() throws Exception {
     driver.get(baseUrl + "/");
-    driver.findElement(By.xpath("//ol[contains(@class,'rgs-menu')]/li/*[contains(text(),'Страхование')]")).click();
-    driver.findElement(By.xpath("//*[contains(text(),'Выезжающим за рубеж')]")).click();
+    click(By.xpath("//ol[contains(@class,'rgs-menu')]/li/*[contains(text(),'Страхование')]"));
+    click(By.xpath("//*[contains(text(),'Выезжающим за рубеж')]"));
 
     assertEquals("Страхование выезжающих за рубеж",
         driver.findElement(By.xpath("//div[@class='page-header']")).getText());
 
-    WebElement calculateInsuranceBtn =  driver.findElement(By.xpath("//*[contains(text(),'Рассчитать ')][contains(@class,'btn')]/.."));
-    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true)", calculateInsuranceBtn);
-    Wait<WebDriver> wait = new WebDriverWait(driver, 10, 1000);
-    wait.until(ExpectedConditions.elementToBeClickable(calculateInsuranceBtn)).click();
-
+    click(By.xpath("//*[contains(text(),'Рассчитать ')][contains(@class,'btn')]/.."));
 
     assertEquals("Калькулятор страхования путешественников онлайн",
         driver.findElement(By.xpath("//h1")).getText());
 
+    Wait<WebDriver> wait = new WebDriverWait(driver, 10, 1000);
     WebElement countTravelBtn =  driver.findElement(By.xpath("//*[contains(text(),'в течение года')]/.."));
     ((JavascriptExecutor) driver).executeScript("return arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//*[contains(text(),'Расчет')]")));
-   Thread.sleep(3000);
+    Thread.sleep(3000);
     wait.until(ExpectedConditions.elementToBeClickable(countTravelBtn)).click();
 
     fillField(By.xpath("//*[contains(text(),'Куда едем')]/ancestor::div[contains(@class,'form-group')]//input"), "Шенген");
-    driver.findElement(By.xpath("//*[contains(text(),'Куда едем')]/ancestor::div[contains(@class,'form-group')]//div[@role='listbox']")).click();
+    click(By.xpath("//*[contains(text(),'Куда едем')]/ancestor::div[contains(@class,'form-group')]//div[@role='listbox']"));
 
     ((JavascriptExecutor) driver).executeScript("return arguments[0].scrollIntoView(true);",  driver.findElement(By.name("ArrivalCountryList")));
-
     driver.findElement(By.name("ArrivalCountryList")).click();
     driver.findElement(By.xpath("//option[text()='Испания']")).click();
 
@@ -68,16 +64,13 @@ public class InsuranceTravelTest {
     fillField(By.xpath("(//input[@data-test-name='FullName'])[1]"), "IVAN IVANOV");
     fillField(By.xpath("//input[@data-test-name='BirthDate']"), "12121990");
 
-    ((JavascriptExecutor) driver).executeScript("return arguments[0].scrollIntoView(true);",  driver.findElement(By.xpath("//*[contains(text(),'активный отдых')]/ancestor::div/div[@class='toggle off toggle-rgs']")));
+    click(By.xpath("//*[contains(text(),'активный отдых')]/ancestor::div/div[@class='toggle off toggle-rgs']"));
 
-    driver.findElement(By.xpath("//*[contains(text(),'активный отдых')]/ancestor::div/div[@class='toggle off toggle-rgs']")).click();
-    driver.findElement(By.xpath("//div[@class='form-footer']//input[@data-test-name='IsProcessingPersonalData']/..")).click();
+    click(By.xpath("//div[@class='form-footer']//input[@data-test-name='IsProcessingPersonalData']/.."));
 
+    click(By.xpath("//button[@data-test-name='NextButton'][contains(text(),'Рассчитать')]"));
 
-    ((JavascriptExecutor) driver).executeScript("return arguments[0].scrollIntoView(true);",  driver.findElement(By.xpath("//button[@data-test-name='NextButton'][contains(text(),'Рассчитать')]")));
-
-    driver.findElement(By.xpath("//button[@data-test-name='NextButton'][contains(text(),'Рассчитать')]")).click();
-
+    wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[contains(@class,'programs')]"))));
 
     assertEquals("Многократные поездки в течение года",
         driver.findElement(By.xpath("//*[contains(text(),'Условия страхования')]/parent::div//strong")).getText());
@@ -94,10 +87,6 @@ public class InsuranceTravelTest {
 
     assertTrue(driver.findElement(By.xpath("//*[contains(text(),'Активный отдых')]/ancestor::div[@class='summary-row']//strong")).getText().contains("Включен"));
 
-//    Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
-//    wait.until(ExpectedConditions.visibilityOf(
-//            driver.findElement(By.xpath("//*[contains(text(),'Отправить заявку')][contains(@class,'btn')]"))));
-
 
   }
 
@@ -106,18 +95,17 @@ public class InsuranceTravelTest {
     driver.quit();
   }
 
-  private boolean isElementPresent(By by) {
-    try {
-      driver.findElement(by);
-      return true;
-    } catch (NoSuchElementException e) {
-      return false;
-    }
-  }
 
   private void fillField(By locator, String value){
     driver.findElement(locator).clear();
     driver.findElement(locator).sendKeys(value);
+  }
+
+  private void click(By locator){
+    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true)", driver.findElement(locator));
+    Wait<WebDriver> wait = new WebDriverWait(driver, 10, 1000);
+    wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+
   }
 
 

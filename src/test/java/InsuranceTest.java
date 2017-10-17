@@ -30,8 +30,8 @@ public class InsuranceTest {
   @Test
   public void testInsurance() throws Exception {
     driver.get(baseUrl + "/");
-    driver.findElement(By.linkText("Страхование")).click();
-    driver.findElement(By.linkText("ДМС")).click();
+    driver.findElement(By.xpath("//ol[contains(@class,'rgs-menu')]/li/*[contains(text(),'Страхование')]")).click();
+    driver.findElement(By.xpath("//*[contains(text(),'ДМС')]")).click();
 
     Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
     wait.until(ExpectedConditions.visibilityOf(
@@ -44,21 +44,16 @@ public class InsuranceTest {
     assertEquals("Заявка на добровольное медицинское страхование",
             driver.findElement(By.xpath("//h4[@class='modal-title']")).getText());
 
-    driver.findElement(By.name("LastName")).click();
-    driver.findElement(By.name("LastName")).clear();
-    driver.findElement(By.name("LastName")).sendKeys("Иванов");
-    driver.findElement(By.name("FirstName")).click();
-    driver.findElement(By.name("FirstName")).clear();
-    driver.findElement(By.name("FirstName")).sendKeys("Иван");
-    driver.findElement(By.name("MiddleName")).click();
-    driver.findElement(By.name("MiddleName")).clear();
-    driver.findElement(By.name("MiddleName")).sendKeys("Иванович");
+    fillField(By.name("LastName"), "Иванов");
+    fillField(By.name("FirstName"), "Иван");
+    fillField(By.name("MiddleName"), "Иванович");
+
     new Select(driver.findElement(By.name("Region"))).selectByVisibleText("Москва");
-    driver.findElement(By.name("Email")).clear();
-    driver.findElement(By.name("Email")).sendKeys("йцукенqwery");
-    driver.findElement(By.name("Comment")).click();
-    driver.findElement(By.name("Comment")).clear();
-    driver.findElement(By.name("Comment")).sendKeys("test");
+
+    fillField(By.name("Email"), "йцукенqwery");
+    fillField(By.name("Comment"), "test");
+
+
     driver.findElement(By.cssSelector("input.checkbox")).click();
     driver.findElement(By.id("button-m")).click();
 
@@ -79,14 +74,11 @@ public class InsuranceTest {
     driver.quit();
   }
 
-  private boolean isElementPresent(By by) {
-    try {
-      driver.findElement(by);
-      return true;
-    } catch (NoSuchElementException e) {
-      return false;
-    }
+  private void fillField(By locator, String value){
+    driver.findElement(locator).clear();
+    driver.findElement(locator).sendKeys(value);
   }
+
 
 
 }
