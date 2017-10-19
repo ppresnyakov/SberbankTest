@@ -19,8 +19,6 @@ public class InsuranceTest {
     System.setProperty("webdriver.gecko.driver", "drv/geckodriver.exe");
     System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
 
-
-    //driver = new FirefoxDriver();
     driver = new ChromeDriver();
     baseUrl = "https://www.rgs.ru/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -74,11 +72,11 @@ public class InsuranceTest {
     driver.quit();
   }
 
+
   private void fillField(By locator, String value){
     driver.findElement(locator).clear();
     driver.findElement(locator).sendKeys(value);
   }
-
 
 
 }
