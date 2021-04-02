@@ -13,21 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 
-public class InsuranceTravelTest {
-	private WebDriver driver;
-	private String baseUrl;
-
-
-	@Before
-	public void setUp() throws Exception {
-		System.setProperty("webdriver.gecko.driver", "drv/geckodriver.exe");
-		System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
-
-		driver = new ChromeDriver();
-		baseUrl = "http://www.sberbank.ru/ru/person";
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
-	}
+public class InsuranceTravelTest extends BaseTest {
 
 	@Test
 	public void testInsurance() throws Exception {
@@ -80,17 +66,6 @@ public class InsuranceTravelTest {
 
 	}
 
-	@After
-	public void tearDown() throws Exception {
-		driver.quit();
-	}
-
-
-	private void fillField(By locator, String value) throws InterruptedException {
-		driver.findElement(locator).clear();
-		driver.findElement(locator).click();
-		driver.findElement(locator).sendKeys(value);
-	}
 
 	private void click(By locator) {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true)", driver.findElement(locator));
