@@ -69,6 +69,12 @@ public class InsuranceTravelTest {
 
 		click(By.xpath("//*[contains(text(),'Продолжить')][contains(@class,'btn btn-primary page__btn')]"));
 
+		assertEquals(LastName,driver.findElement(By.id("surname_vzr_ins_0")).getAttribute("value"));
+		assertEquals(FirstName,driver.findElement(By.id("name_vzr_ins_0")).getAttribute("value"));
+		assertEquals(BirthDate,driver.findElement(By.id("birthDate_vzr_ins_0")).getAttribute("value"));
+		assertEquals(FirstName,driver.findElement(By.id("person_firstName")).getAttribute("value"));
+		assertEquals(LastName,driver.findElement(By.id("person_lastName")).getAttribute("value"));
+
 		assertEquals("При заполнении данных произошла ошибка",
 				driver.findElement(By.xpath("//*[contains(@class,'alert-form alert-form-error')]")).getText());
 
