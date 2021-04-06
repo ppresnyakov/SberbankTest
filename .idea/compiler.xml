@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="rgstests" />
+        <module name="Sbertest" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="rgstests" target="1.8" />
+      <module name="Sbertest" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

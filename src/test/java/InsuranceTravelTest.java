@@ -1,7 +1,4 @@
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,13 +13,12 @@ import static org.junit.Assert.assertEquals;
 public class InsuranceTravelTest extends BaseTest {
 
 	@Test
+	@Ignore
 	public void testInsurance() throws Exception {
 		driver.get(baseUrl + "/");
 		click(By.xpath("//ul[contains(@class,'kitt-top-menu__list kitt-top-menu__list_icons kitt-top-menu__list_center')]/li/*[contains(text(),'Страхование')]"));
 
-
 		click(By.xpath("//*[contains(text(),'Перейти в каталог')]"));
-
 		click(By.xpath("//*[contains(text(),'Страхование для путешественников')][contains(@class,'uc-full__header')]"));
 
 		Wait<WebDriver> wait = new WebDriverWait(driver, 10, 1000);
@@ -30,7 +26,6 @@ public class InsuranceTravelTest extends BaseTest {
 		wait.until(ExpectedConditions.textToBe(By.xpath("//h1"), "Страхование путешественников"));
 		click(By.xpath("//*[contains(text(),'Оформить онлайн')][contains(@class,'kitt-button__text')]"));
 		click(By.xpath("//*[contains(text(),'Оформить')]"));
-
 
 		String LastName = "Пресняков";
 		String FirstName = "Павел";
@@ -73,6 +68,10 @@ public class InsuranceTravelTest extends BaseTest {
 		wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
 
 	}
-
+	private void fillField(By locator, String value) throws InterruptedException {
+		driver.findElement(locator).clear();
+		driver.findElement(locator).click();
+		driver.findElement(locator).sendKeys(value);
+	}
 
 }
