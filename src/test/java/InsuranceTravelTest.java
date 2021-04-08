@@ -1,16 +1,13 @@
 import org.junit.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import javax.swing.*;
-import java.util.concurrent.TimeUnit;
+import steps.BaseSteps;
 
 import static org.junit.Assert.assertEquals;
 
-public class InsuranceTravelTest extends BaseTest {
+public class InsuranceTravelTest extends BaseSteps {
 
 	@Test
 	@Ignore

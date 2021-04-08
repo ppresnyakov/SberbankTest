@@ -1,22 +1,19 @@
+import org.junit.Ignore;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.InsurancePage;
 import pages.MainPage;
 import pages.SecondInsurancePage;
 import pages.SetUpPage;
-
-import java.util.concurrent.TimeUnit;
+import steps.BaseSteps;
 
 import static org.junit.Assert.assertEquals;
 
 
-public class MyTestWithPages extends  BaseTest{
+public class MyTestWithPages extends BaseSteps {
 
 
     @Test
+    @Ignore
     public void newTestInsurance(){
         MainPage mainPage = new MainPage(driver);
         driver.get(baseUrl + "/");

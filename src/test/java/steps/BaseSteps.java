@@ -1,3 +1,5 @@
+package steps;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -8,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import util.TestProperties;
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -15,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 
 
-public class BaseTest {
+public class BaseSteps {
     protected static WebDriver driver;
     protected static String baseUrl;
     public static Properties properties = TestProperties.getInstance().getProperties();
@@ -56,7 +59,6 @@ public class BaseTest {
             return false;
         }
     }
-
 
 
     protected void checkFillField(String value, By locator) {
