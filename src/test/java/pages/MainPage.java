@@ -18,10 +18,6 @@ public class MainPage {
         PageFactory.initElements(driver, this);
     }
 
-    public MainPage() {
-
-    }
-
     public void ClickInsuranceItem(){
         InsuranceItem.click();
     }

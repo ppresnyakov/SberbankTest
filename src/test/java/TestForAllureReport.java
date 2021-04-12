@@ -1,6 +1,8 @@
 import cucumber.api.java.ca.I;
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Title;
+import org.junit.Test;
+import ru.yandex.qatools.allure.annotations.Title;
 import steps.*;
 
 import java.util.HashMap;
@@ -24,17 +26,20 @@ public class TestForAllureReport extends BaseSteps {
         testData.put("Имя","Павел");
         testData.put("Отчество","Владимирович");
         testData.put("Дата рождения","15.12.1993");
-        testData.put("Серия паспорта","195245");
+        testData.put("Серия паспорта","1952");
         testData.put("Номер паспорта","365645");
         testData.put("Дата выдачи паспорта","20.06.2005");
         testData.put("Место выдачи паспорта","УФМС какого то района");
 
         mainSteps.stepSelectInsuranceItem();
-        mainSteps.stepSelectInsuranceItem();
+        mainSteps.stepChooseCatalog();
         insurancePageSteps.SelectInsuranceItemTraveller();
         insuranceSecondPageSteps.SelectBuyInsurance();
         setupPageStep.PushButtonBuy();
-
+        setupPageStep.fillFields(testData);
+        setupPageStep.checkFillFields(testData);
+        setupPageStep.PushContinueButton();
+        setupPageStep.CheckError("При заполнении данных произошла ошибка");
 
     }
 }

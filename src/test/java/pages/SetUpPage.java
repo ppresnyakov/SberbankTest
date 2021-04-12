@@ -124,13 +124,13 @@ public class SetUpPage  extends MainPage{
             case  "Отчество":
                 return  MidNameInsuranceField.getAttribute("value");
             case  "Дата рождения":
-                return  BirthDateInsuranceField.getAttribute("value");
+                return BirthDateField.getAttribute("value");
             case  "Серия паспорта":
                 return  PassportSeriesField.getAttribute("value");
             case  "Номер паспорта":
                 return  PassportNumberField.getAttribute("value");
             case  "Дата выдачи паспорта":
-                return  PassportDateField.getAttribute("value");
+                return   PassportDateField.getAttribute("value");
             case  "Место выдачи паспорта":
                 return PassportDataField.getAttribute("value");
             default:  throw new AssertionError("Поле '"+fieldName+"' не объявлено на странице");
