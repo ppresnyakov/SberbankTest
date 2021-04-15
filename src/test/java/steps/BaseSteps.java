@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.qatools.allure.annotations.Attachment;
 import util.TestProperties;
 
 import java.util.Properties;
@@ -59,6 +60,10 @@ public class BaseSteps {
         } catch (NoSuchElementException e) {
             return false;
         }
+    }
+    @Attachment(type = "image/png", value = "Screenshot")
+    public static byte[] takeScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
 
