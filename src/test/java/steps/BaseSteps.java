@@ -62,8 +62,8 @@ public class BaseSteps {
         }
     }
     @Attachment(type = "image/png", value = "Screenshot")
-    public static byte[] takeScreenshot() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        public static byte[] takeScreenshot() {
+            return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
 

@@ -1,4 +1,4 @@
-import cucumber.api.java.ca.I;
+
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Title;
 import org.junit.Test;
