@@ -124,7 +124,7 @@ public class SetUpPage  extends MainPage{
             case  "Отчество":
                 return  MidNameInsuranceField.getAttribute("value");
             case  "Дата рождения":
-                return BirthDateInsuranceField.getAttribute("value");
+                return BirthDateInsuranceField.getText();
             case  "Серия паспорта":
                 return  PassportSeriesField.getAttribute("value");
             case  "Номер паспорта":
