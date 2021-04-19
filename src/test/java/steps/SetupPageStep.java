@@ -9,16 +9,16 @@ import java.util.HashMap;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class SetupPageStep extends BaseSteps{
+public class SetupPageStep {
 
     @Step("Выбран пункт меню Страхование")
     public void PushButtonBuy(){
-        new SetUpPage(driver).ClickRegisterInsuranceButton();
+        new SetUpPage().ClickRegisterInsuranceButton();
     }
 
     @Step("поле {0} заполняется значением {1}")
     public void fillField(String field, String value){
-        new SetUpPage(driver).fillField(field, value);
+        new SetUpPage().fillField(field, value);
     }
 
     @Step("Заполняются поля")
@@ -28,7 +28,7 @@ public class SetupPageStep extends BaseSteps{
 
     @Step("поле {0} заполнено значением {1}")
     public void checkFillField(String field, String value){
-        String actual = new SetUpPage(driver).GetFieldValue(field);
+        String actual = new SetUpPage().GetFieldValue(field);
         assertTrue(String.format("Значение поля [%s] равно [%s]. Ожидалось - [%s]", field, actual, value),
                 actual.equals(value));
     }
@@ -40,12 +40,12 @@ public class SetupPageStep extends BaseSteps{
 
     @Step("Нажали кнопку продолжть")
     public void PushContinueButton(){
-        new SetUpPage(driver).ClickContinueButton();
+        new SetUpPage().ClickContinueButton();
     }
 
-    @Step("Проверка текста ошибки")
+    @Step("Проверка текста {0} ошибки ")
     public void CheckError(String ExpectedError){
-       String ErrorMessage =  new SetUpPage(driver).GetErrorMessage();
+       String ErrorMessage =  new SetUpPage().GetErrorMessage();
         assertEquals(ExpectedError, ErrorMessage);
     }
 }

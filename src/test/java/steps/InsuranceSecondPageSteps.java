@@ -4,11 +4,11 @@ import pages.InsurancePage;
 import pages.SecondInsurancePage;
 import ru.yandex.qatools.allure.annotations.Step;
 
-public class InsuranceSecondPageSteps extends  BaseSteps{
+public class InsuranceSecondPageSteps {
 
     @Step("Нажать оформить онлайн")
     public void SelectBuyInsurance(){
-        new SecondInsurancePage(driver).ClickBuyInsuranceOnline();
+        new SecondInsurancePage().ClickBuyInsuranceOnline();
     }
 }
 

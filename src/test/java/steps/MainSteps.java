@@ -3,16 +3,16 @@ package steps;
 import pages.MainPage;
 import ru.yandex.qatools.allure.annotations.Step;
 
-public class MainSteps extends BaseSteps{
+public class MainSteps {
 
 
     @Step("Выбран пункт меню Страхование")
     public void stepSelectInsuranceItem(){
-       new MainPage(driver).ClickInsuranceItem();
+       new MainPage().ClickInsuranceItem();
     }
 
     @Step("Выбрать Перейти в Каталог")
     public void stepChooseCatalog(){
-        new MainPage(driver).ClickInsuranceItemsLink();
+        new MainPage().ClickInsuranceItemsLink();
     }
 }

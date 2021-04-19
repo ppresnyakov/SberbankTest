@@ -6,8 +6,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import steps.BaseSteps;
 
 public class SetUpPage  extends MainPage{
+
+    public SetUpPage(){
+        PageFactory.initElements(BaseSteps.getDriver(), this);
+    }
 
     @FindBy(xpath = "//*[contains(text(),'Оформить')]")
     WebElement RegisterInsuranceButton;
@@ -124,7 +129,7 @@ public class SetUpPage  extends MainPage{
             case  "Отчество":
                 return  MidNameInsuranceField.getAttribute("value");
             case  "Дата рождения":
-                return BirthDateInsuranceField.getText();
+                return BirthDateInsuranceField.getAttribute("value");
             case  "Серия паспорта":
                 return  PassportSeriesField.getAttribute("value");
             case  "Номер паспорта":
